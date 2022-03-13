@@ -1,0 +1,10 @@
+language: generic
+require: sudo
+services:
+  - docker
+
+before_install:
+  - docker build -t sauliusonis/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true sauliusonis/docker-react npm run test
